@@ -1,0 +1,376 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Matchify AI";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial;
+            background: #DBD7D2;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #F5F5F5;
+            padding: 16px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 20px rgba(0,0,0,.15);
+            border-radius: 60px;
+            margin: 25px;
+            animation: slideDown .9s ease;
+        }
+
+        @@keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav h2 {
+            color: #6C3082;
+            margin: 0;
+            font-size: 26px;
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #333;
+            position: relative;
+        }
+
+            nav a::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: #6C3082;
+                left: 0;
+                bottom: -6px;
+                transition: .3s;
+            }
+
+            nav a:hover {
+                color: #6C3082;
+            }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+        .btn {
+            background: #6C3082;
+            color: white;
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: .3s ease;
+            box-shadow: 0 6px 14px rgba(108,48,130,.4);
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 22px rgba(108,48,130,.6);
+            }
+
+        /* HERO */
+        .hero {
+            padding: 120px;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: 56px;
+                animation: heroFade 1.2s ease;
+            }
+
+        @@keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero span {
+            color: #6C3082;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 720px;
+            margin: auto
+        }
+
+        /* SECTIONS */
+        .section {
+            background: #F5F5F5;
+            margin: 80px auto;
+            padding: 70px;
+            width: 80%;
+            border-radius: 26px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.15);
+        }
+
+        .features {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 60px;
+        }
+
+        .card {
+            background: #F5F5F5;
+            padding: 36px;
+            width: 280px;
+            border-radius: 22px;
+            box-shadow: 0 8px 18px rgba(0,0,0,.15);
+            transition: .35s;
+        }
+
+            .card:hover {
+                transform: translateY(-12px) scale(1.05);
+            }
+
+        /* STATS */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+            .stats h2 {
+                color: #6C3082;
+                font-size: 42px;
+                margin: 0;
+            }
+
+        /* FORM */
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 12px;
+            border: 1px solid #bbb;
+            font-size: 16px;
+            font-family: 'Poppins';
+        }
+
+        /* FOOTER — WHITE SMOKE */
+        footer {
+            background: #F5F5F5;
+            color: #333;
+            padding: 70px 90px 30px;
+            margin-top: 100px;
+            border-top: 2px solid #ddd;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+            .footer-grid h3 {
+                margin-bottom: 12px;
+                color: #6C3082;
+            }
+
+            .footer-grid a {
+                display: block;
+                color: #333;
+                text-decoration: none;
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+
+                .footer-grid a:hover {
+                    color: #6C3082;
+                }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            opacity: .8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <img src="/images/logo11.png">
+
+        </div>
+        <div>
+            <a href="#features">Features</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a class="btn">Login</a>
+            <a class="btn">Sign Up</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>AI Resume Analyzer & <span>Smart Job Matching</span></h1>
+        <p>Automate resume screening, analyze skills with AI, and get perfectly matched jobs in seconds.</p>
+        <br>
+        <a class="btn">Get Started Free</a>
+    </section>
+
+    <section id="features" class="features">
+        <div class="card"><h3>📄 Resume Parsing</h3><p>Extract skills & experience automatically.</p></div>
+        <div class="card"><h3>🤖 AI Analysis</h3><p>Understand candidate strengths.</p></div>
+        <div class="card"><h3>📊 Match Score</h3><p>Job match percentage.</p></div>
+        <div class="card"><h3>💼 Smart Jobs</h3><p>Personalized recommendations.</p></div>
+    </section>
+
+    <section id="workflow" class="section">
+        <h2>How Matchify AI Works</h2>
+
+        <p>
+            <strong>Step 1 – Upload Your Resume</strong><br>
+            Users upload their resume in PDF or DOCX format. The system securely stores and prepares the document for AI processing.
+        </p>
+
+        <p>
+            <strong>Step 2 – AI Resume Parsing</strong><br>
+            Matchify AI scans the resume and extracts key information such as skills, work experience, education, certifications, and keywords using natural language processing.
+        </p>
+
+        <p>
+            <strong>Step 3 – Skill & Profile Analysis</strong><br>
+            Machine learning models evaluate the candidate’s profile, identify strengths, role suitability, and generate a structured skill profile.
+        </p>
+
+        <p>
+            <strong>Step 4 – Smart Job Matching</strong><br>
+            The system compares the resume data with job requirements and calculates match percentages for each role.
+        </p>
+
+        <p>
+            <strong>Step 5 – Personalized Job Recommendations</strong><br>
+            Users receive a list of best-fit jobs ranked by relevance, along with insights on missing skills and improvement suggestions.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Platform Impact</h2>
+        <div class="stats">
+            <div><h2>95%</h2><p>Accuracy</p></div>
+            <div><h2>3x</h2><p>Faster Hiring</p></div>
+            <div><h2>10k+</h2><p>Users</p></div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Why Matchify AI?</h2>
+
+        <p>
+            Traditional hiring and job searching processes are slow, manual, and often influenced by human bias. Recruiters spend hours screening resumes, while candidates struggle to find roles that truly match their skills and experience.
+        </p>
+
+        <p>
+            Matchify AI transforms this process using intelligent automation and data-driven decision making. Our system analyzes resumes with advanced natural language processing and machine learning models to extract meaningful insights such as skills, career progression, and role suitability.
+        </p>
+
+        <p>
+            Instead of relying on keyword matching alone, Matchify AI evaluates real skill relevance and job requirements to generate accurate match scores. This ensures candidates are recommended opportunities based on actual capability — not just resume formatting or buzzwords.
+        </p>
+
+        <p>
+            By removing repetitive manual work and reducing unconscious bias, Matchify AI helps companies hire faster and smarter, while enabling job seekers to discover careers where they can truly succeed.
+        </p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <form>
+            <input placeholder="Name">
+            <input placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea><br><br>
+            <button class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Matchify AI</h3>
+                <p>AI-powered resume analysis & smart job matching platform.</p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div>
+                <h3>Support</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help Center</a>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>Email: support@matchifyai.com</p>
+                <p>Phone: +91 90000 00000</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Matchify AI. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
