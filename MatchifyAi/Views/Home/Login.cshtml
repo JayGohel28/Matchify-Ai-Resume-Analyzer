@@ -1,0 +1,209 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Login - Matchify AI";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial;
+            background: #DBD7D2;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: #F5F5F5;
+            padding: 16px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 12px 28px rgba(0,0,0,.12);
+            border-radius: 60px;
+            margin: 25px;
+            animation: slideDown 1s ease;
+        }
+
+        @@keyframes slideDown {
+            from {
+                transform: translateY(-60px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav img {
+            height: 60px;
+            width: auto;
+        }
+
+        nav h2 {
+            font-family: 'Poppins';
+            color: #6C3082;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #6C3082;
+        }
+
+        /* ===== LOGIN CONTAINER ===== */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+            animation: fadeUp 1.2s ease;
+        }
+
+        @@keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            background: #F5F5F5;
+            padding: 60px;
+            width: 380px;
+            border-radius: 30px;
+            box-shadow: 0 18px 40px rgba(0,0,0,.18);
+            text-align: center;
+        }
+
+            .login-card h1 {
+                font-family: 'Poppins';
+                margin-bottom: 10px;
+            }
+
+            .login-card p {
+                opacity: .75;
+                margin-bottom: 35px;
+            }
+
+        /* ===== INPUTS & DROPDOWN ===== */
+        input, select {
+            width: 100%;
+            height: 45px;
+            padding: 0 18px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            border: 1px solid #bbb;
+            font-size: 16px;
+            font-family: 'Inter';
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+            input:focus, select:focus {
+                outline: none;
+                border-color: #6C3082;
+                box-shadow: 0 0 10px rgba(108,48,130,.4);
+            }
+
+        /* ===== BUTTON ===== */
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: #6C3082;
+            color: white;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: .35s ease;
+            box-shadow: 0 10px 22px rgba(108,48,130,.45);
+        }
+
+            .btn:hover {
+                transform: translateY(-3px) scale(1.02);
+                box-shadow: 0 16px 34px rgba(108,48,130,.65);
+            }
+
+        /* ===== LINKS ===== */
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+            .links a {
+                color: #6C3082;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+                .links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div style="display:flex;align-items:center;gap:15px;">
+            <img src="/images/logo1.png">
+        </div>
+        <a href="/">← Back to Home</a>
+    </nav>
+
+    <!-- LOGIN FORM -->
+    <div class="login-wrapper">
+
+        <div class="login-card">
+
+            <h1>Welcome Back</h1>
+            <p>Login to continue to Matchify AI</p>
+
+            <form>
+
+                <!-- ROLE DROPDOWN ADDED -->
+                <select required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option>Admin</option>
+                    <option>Recruiter</option>
+                    <option>User</option>
+                </select>
+
+                <input type="text" placeholder="Username or Email" required>
+                <input type="password" placeholder="Password" required>
+
+                <button class="btn">Login</button>
+            </form>
+
+            <div class="links">
+                <p><a href="#">Forgot Password?</a></p>
+                <p>Don’t have an account? <a href="/Account/Register">Sign Up</a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
