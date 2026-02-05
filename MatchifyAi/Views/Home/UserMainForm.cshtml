@@ -1,0 +1,207 @@
+﻿@{
+    ViewData["Title"] = "Upload Resume - Matchify AI";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #DBD7D2;
+            --card-color: #F5F5F5;
+            --btn-color: #6C3082;
+            --text-dark: #2e2e2e;
+            --text-muted: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--card-color);
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+            header .logo {
+                font-family: 'Poppins', sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--btn-color);
+            }
+
+            header .logout {
+                text-decoration: none;
+                font-weight: 500;
+                color: var(--text-dark);
+            }
+
+                header .logout:hover {
+                    color: var(--btn-color);
+                }
+
+        /* ===== MAIN ===== */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .form-card {
+            background: var(--card-color);
+            width: 100%;
+            max-width: 520px;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            animation: slideUp 0.8s ease;
+        }
+
+        /* 🔥 FIX: Razor-safe keyframes */
+        @@keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-card h2 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-card p {
+            margin-bottom: 25px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+            input:focus, select:focus {
+                border-color: var(--btn-color);
+                box-shadow: 0 0 0 2px rgba(108,48,130,0.2);
+            }
+
+        .submit-btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 13px;
+            background: var(--btn-color);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+            .submit-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 18px rgba(108,48,130,0.35);
+            }
+
+        footer {
+            background: var(--card-color);
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Matchify AI</div>
+        <a href="/Account/Logout" class="logout">Logout</a>
+    </header>
+
+    <main>
+        <form class="form-card" method="post" enctype="multipart/form-data">
+            <h2>Upload Your Resume</h2>
+            <p>Let AI analyze your resume and recommend the best jobs.</p>
+
+            <div class="form-group">
+                <label>Resume Upload</label>
+                <input type="file" name="ResumeFile" required />
+            </div>
+
+            <div class="form-group">
+                <label>Desired Job Role</label>
+                <input type="text" name="JobRole" required />
+            </div>
+
+            <div class="form-group">
+                <label>Experience Level</label>
+                <select name="ExperienceLevel" required>
+                    <option value="">Select</option>
+                    <option>Fresher</option>
+                    <option>1–2 Years</option>
+                    <option>3–5 Years</option>
+                    <option>5+ Years</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Job Location</label>
+                <input type="text" name="Location" />
+            </div>
+
+            <button type="submit" class="submit-btn">Upload Details</button>
+        </form>
+    </main>
+
+    <footer>
+        © 2026 Matchify AI · Smart Resume Analysis
+    </footer>
+
+</body>
+</html>
