@@ -9,153 +9,216 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-color: #DBD7D2;
-            --card-color: #F5F5F5;
-            --btn-color: #6C3082;
-            --text-dark: #2e2e2e;
-            --text-muted: #666;
+            --surface: #F5F5F5;
+            --primary: #6C3082;
+            --navbar: #f4f2ef;
+            --text-dark: #2b2b2b;
+            --text-muted: #6f6f6f;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
         }
 
         body {
+            font-family: 'Manrope', sans-serif;
             background: var(--bg-color);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* ===== NAVBAR ===== */
-        header {
-            background: var(--card-color);
-            padding: 16px 50px;
+        /* ================= NAVBAR ================= */
+        .navbar-wrap {
+            padding: 20px;
+        }
+
+        .navbar {
+            background: var(--navbar);
+            border-radius: 70px;
+            padding: 18px 40px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,.15);
         }
 
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--btn-color);
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logout-btn {
-            background: var(--btn-color);
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 8px;
+            .nav-left img {
+                height: 72px;
+            }
+
+            .nav-left span {
+                font-family: 'Poppins', sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+            }
+
+        .nav-center a {
+            margin: 0 18px;
             text-decoration: none;
             font-weight: 500;
-            transition: transform .3s, box-shadow .3s;
+            color: var(--text-dark);
         }
 
-            .logout-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 18px rgba(108,48,130,.35);
-            }
+        .nav-right a {
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(108,48,130,.35);
+        }
 
-        /* ===== MAIN ===== */
+        /* ================= MAIN ================= */
         main {
             flex: 1;
+            padding: 70px 60px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 60px;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
             align-items: center;
         }
 
-        .info-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
+        /* ===== LEFT CONTENT ===== */
+        .content {
+            animation: fadeLeft .9s ease;
         }
 
-        .info-section span {
-            color: var(--btn-color);
-        }
-
-        .info-section p {
-            margin: 15px 0 25px;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .info-section li {
-            list-style: none;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-            .info-section li::before {
-                content: "✔";
-                margin-right: 10px;
-                color: var(--btn-color);
+            .content h1 {
+                font-family: 'Poppins', sans-serif;
+                font-size: 44px;
+                line-height: 1.2;
             }
+
+                .content h1 span {
+                    color: var(--primary);
+                }
+
+            .content p {
+                margin: 22px 0 30px;
+                color: var(--text-muted);
+                font-size: 17px;
+                line-height: 1.7;
+            }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .feature-box {
+            background: rgba(255,255,255,.6);
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(0,0,0,.08);
+        }
 
         /* ===== FORM ===== */
         .form-card {
-            background: var(--card-color);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 14px 35px rgba(0,0,0,.15);
-            animation: fadeInRight .8s ease;
+            background: var(--surface);
+            padding: 42px;
+            border-radius: 22px;
+            box-shadow: 0 20px 45px rgba(0,0,0,.18);
+            animation: fadeRight .9s ease;
         }
 
-        .form-group {
-            margin-bottom: 18px;
+            .form-card h2 {
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 8px;
+            }
+
+            .form-card p {
+                color: var(--text-muted);
+                margin-bottom: 28px;
+                font-size: 14px;
+            }
+
+        .field {
+            margin-bottom: 20px;
         }
 
         label {
-            font-weight: 500;
-            display: block;
+            font-weight: 600;
+            font-size: 14px;
             margin-bottom: 6px;
+            display: block;
         }
 
         input, select {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #d0d0d0;
+            font-size: 14px;
+            transition: .3s;
         }
 
             input:focus, select:focus {
                 outline: none;
-                border-color: var(--btn-color);
-                box-shadow: 0 0 0 2px rgba(108,48,130,.2);
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(108,48,130,.2);
             }
 
         .submit-btn {
             width: 100%;
-            padding: 14px;
-            background: var(--btn-color);
+            padding: 16px;
+            background: var(--primary);
             color: #fff;
             border: none;
-            border-radius: 10px;
-            font-weight: 600;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 10px 24px rgba(108,48,130,.4);
+            transition: .3s;
         }
 
-        /* ===== FOOTER ===== */
+            .submit-btn:hover {
+                transform: translateY(-2px);
+            }
+
+        /* ================= FOOTER ================= */
         footer {
-            background: #2e2e2e;
-            color: #ccc;
-            padding: 22px;
+            background: var(--navbar);
+            padding: 24px;
             text-align: center;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @@keyframes fadeInRight {
+        /* ================= ANIMATIONS ================= */
+        @@keyframes fadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes fadeRight {
             from {
                 opacity: 0;
                 transform: translateX(40px);
@@ -167,11 +230,15 @@
             }
         }
 
-        /* ===== RESPONSIVE (FIXED) ===== */
+        /* ================= RESPONSIVE ================= */
         @@media (max-width: 900px) {
             main {
                 grid-template-columns: 1fr;
                 padding: 40px 20px;
+            }
+
+            .nav-center {
+                display: none;
             }
         }
     </style>
@@ -179,29 +246,52 @@
 
 <body>
 
-    <header>
-        <div class="logo">Matchify AI</div>
-        <a href="/Account/Logout" class="logout-btn">Logout</a>
-    </header>
+    <!-- NAVBAR -->
+    <div class="navbar-wrap">
+        <nav class="navbar">
+            <div class="nav-left">
+                <img src="/images/logo11.png" alt="Logo" />
+              
+            </div>
 
+            <div class="nav-right">
+                <a href="/Account/Logout">Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- MAIN -->
     <main>
-        <div class="info-section">
-            <h1>AI-Powered <span>Resume Analysis</span></h1>
-            <p>Upload your resume and let Matchify AI match you with the right career path.</p>
-            <ul>
-                <li>Smart resume parsing</li>
-                <li>Accurate job matching</li>
-                <li>Skill gap insights</li>
-            </ul>
+
+        <!-- INFO -->
+        <div class="content">
+            <h1>Build Your Career With <span>AI Precision</span></h1>
+            <p>
+                Matchify AI analyzes your resume, understands your experience,
+                and maps you to roles that actually fit — not random job listings.
+            </p>
+
+            <div class="features">
+                <div class="feature-box">AI Resume Parsing</div>
+                <div class="feature-box">Role Intelligence</div>
+                <div class="feature-box">Skill Gap Detection</div>
+                <div class="feature-box">Smart Matching</div>
+            </div>
         </div>
 
+        <!-- FORM -->
         <form class="form-card" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Resume Upload</label>
+            <h2>Upload Resume</h2>
+            <p>Just 4 inputs. AI does the rest.</p>
+
+            <!-- 1 -->
+            <div class="field">
+                <label>Resume File</label>
                 <input type="file" name="ResumeFile" required />
             </div>
 
-            <div class="form-group">
+            <!-- 2 -->
+            <div class="field">
                 <label>Desired Job Role</label>
                 <select name="JobRole" required>
                     <option value="">Select Role</option>
@@ -209,16 +299,19 @@
                     <option>Java Developer</option>
                     <option>Python Developer</option>
                     <option>Full Stack Developer</option>
-                    <option>React Developer</option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
                     <option>DevOps Engineer</option>
                     <option>Data Scientist</option>
+                    <option>AI Engineer</option>
                 </select>
             </div>
 
-            <div class="form-group">
+            <!-- 3 -->
+            <div class="field">
                 <label>Experience Level</label>
                 <select name="ExperienceLevel" required>
-                    <option value="">Select</option>
+                    <option value="">Select Experience</option>
                     <option>Fresher</option>
                     <option>1–3 Years</option>
                     <option>3–5 Years</option>
@@ -226,12 +319,25 @@
                 </select>
             </div>
 
-            <button class="submit-btn">Upload Details</button>
+            <!-- 4 (New dropdown) -->
+            <div class="field">
+                <label>Employment Type</label>
+                <select name="EmploymentType" required>
+                    <option value="">Select Type</option>
+                    <option>Full Time</option>
+                    <option>Part Time</option>
+                    <option>Internship</option>
+                    <option>Contract</option>
+                </select>
+            </div>
+
+            <button class="submit-btn">Analyze Resume</button>
         </form>
+
     </main>
 
     <footer>
-        © 2026 Matchify AI · All rights reserved
+        © 2026 Matchify AI · Smart Career Intelligence
     </footer>
 
 </body>
