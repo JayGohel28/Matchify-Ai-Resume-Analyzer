@@ -149,7 +149,6 @@
             margin: 40px 0 20px;
             font-size: 18px;
             font-weight: 600;
-            color: var(--text-dark);
             border-bottom: 2px solid #ddd;
             padding-bottom: 8px;
         }
@@ -224,17 +223,37 @@
                 transform: translateY(-2px);
             }
 
-        /* ================= FOOTER ================= */
+        /* ================= FOOTER (UNCHANGED) ================= */
         footer {
             background: var(--white-smoke);
-            padding: 45px 30px 20px;
+            padding: 50px 30px 20px;
             border-radius: 40px 40px 0 0;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
         }
 
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        footer h4 {
+            margin-bottom: 12px;
+        }
+
+        footer p,
+        footer a {
+            font-size: 14px;
+            color: #555;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
         .footer-bottom {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 13px;
             color: #777;
         }
@@ -263,6 +282,10 @@
 
         @@media (max-width: 768px) {
             .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -296,8 +319,7 @@
             </div>
 
             <div class="info-box">
-                Fill out all required fields carefully. Clear job titles and skills improve candidate matching
-                and reduce irrelevant applications.
+                Clear job titles and well-defined skills significantly improve candidate matching quality.
             </div>
 
             <div class="section-title">Job Details</div>
@@ -308,19 +330,17 @@
                     <span class="hint">Select the most relevant role</span>
                     <select required>
                         <option value="">Select Job Title</option>
-                        <option>Software Engineer</option>
                         <option>.NET Developer</option>
                         <option>Full Stack Developer</option>
                         <option>Backend Developer</option>
                         <option>Frontend Developer</option>
-                        <option>Data Analyst</option>
+                        <option>Software Engineer</option>
                         <option>AI / ML Engineer</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Experience Level *</label>
-                    <span class="hint">Total professional experience required</span>
                     <select required>
                         <option value="">Select</option>
                         <option>Fresher</option>
@@ -346,7 +366,6 @@
 
                 <div class="form-group full">
                     <label>Job Description *</label>
-                    <span class="hint">Responsibilities, expectations, and growth opportunities</span>
                     <textarea required></textarea>
                 </div>
             </div>
@@ -356,13 +375,11 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label>Job Location</label>
-                    <span class="hint">City or Remote</span>
                     <input type="text" />
                 </div>
 
                 <div class="form-group">
                     <label>Employment Type</label>
-                    <span class="hint">Nature of employment</span>
                     <select>
                         <option value="">Select</option>
                         <option>Full Time</option>
@@ -374,7 +391,6 @@
 
                 <div class="form-group full">
                     <label>Company Name (Optional)</label>
-                    <span class="hint">Visible to candidates</span>
                     <input type="text" />
                 </div>
             </div>
@@ -386,6 +402,24 @@
 
     <!-- FOOTER -->
     <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Matchify AI</h4>
+                <p>An AI-powered recruitment platform helping recruiters find the right talent faster and smarter.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#">Post Job</a><br />
+                <a href="#">Manage Jobs</a><br />
+                <a href="#">Candidates</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Email: support@matchify.ai</p>
+                <p>Location: India</p>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             © 2026 Matchify AI. All rights reserved.
         </div>
