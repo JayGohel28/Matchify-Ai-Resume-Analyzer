@@ -1,0 +1,263 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Recruiter - Post Job";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nav-form: #F5F5F5;
+            --bg-main: #DBD7D2;
+            --btn-main: #6C3082;
+            --btn-hover: #5a286d;
+            --text-dark: #2f2f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg-main);
+            min-height: 100vh;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            background: var(--nav-form);
+            padding: 16px 40px;
+            border-radius: 0 0 26px 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+            .navbar .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .navbar img {
+                height: 42px;
+            }
+
+            .navbar ul {
+                list-style: none;
+                display: flex;
+                gap: 24px;
+                margin: 0;
+                padding: 0;
+            }
+
+                .navbar ul li a {
+                    text-decoration: none;
+                    color: var(--text-dark);
+                    font-weight: 500;
+                    transition: color 0.3s ease;
+                }
+
+                    .navbar ul li a:hover {
+                        color: var(--btn-main);
+                    }
+
+        /* ================= FORM ================= */
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .form-card {
+            background: var(--nav-form);
+            width: 100%;
+            max-width: 720px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            animation: slideUp 0.7s ease;
+        }
+
+            .form-card h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: 700;
+                color: var(--text-dark);
+            }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+            .form-group label {
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 6px;
+                display: block;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 12px 14px;
+                border-radius: 12px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+                outline: none;
+                transition: all 0.3s ease;
+            }
+
+            .form-group textarea {
+                resize: none;
+                min-height: 120px;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus,
+                .form-group select:focus {
+                    border-color: var(--btn-main);
+                    box-shadow: 0 0 0 3px rgba(108,48,130,0.15);
+                }
+
+        /* ================= BUTTON ================= */
+        .btn-submit {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            background: var(--btn-main);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .btn-submit:hover {
+                background: var(--btn-hover);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 22px rgba(108,48,130,0.35);
+            }
+
+        /* ================= ANIMATIONS ================= */
+        @@keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @@media (max-width: 768px) {
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            .navbar {
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="~/images/logo11.png" alt="Logo" />
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Post Job</a></li>
+            <li><a href="#">Manage Jobs</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- FORM -->
+    <div class="container">
+        <form class="form-card" method="post">
+            <h2>Post Job</h2>
+
+            <div class="form-group">
+                <label>Job Title *</label>
+                <input type="text" required />
+            </div>
+
+            <div class="form-group">
+                <label>Required Skills *</label>
+                <input type="text" placeholder="ASP.NET Core, SQL, React" required />
+            </div>
+
+            <div class="form-group">
+                <label>Experience Level *</label>
+                <select required>
+                    <option value="">Select</option>
+                    <option>Fresher</option>
+                    <option>1–3 Years</option>
+                    <option>3–5 Years</option>
+                    <option>5+ Years</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Job Description *</label>
+                <textarea required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Job Location</label>
+                <input type="text" />
+            </div>
+
+            <div class="form-group">
+                <label>Employment Type</label>
+                <select>
+                    <option value="">Select</option>
+                    <option>Full Time</option>
+                    <option>Part Time</option>
+                    <option>Internship</option>
+                    <option>Contract</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Company Name (Optional)</label>
+                <input type="text" />
+            </div>
+
+            <button type="submit" class="btn-submit">Post Job</button>
+        </form>
+    </div>
+
+</body>
+</html>

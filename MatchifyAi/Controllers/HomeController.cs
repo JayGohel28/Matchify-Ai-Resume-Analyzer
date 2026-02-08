@@ -6,6 +6,10 @@ namespace MatchifyAi.Controllers
 {
     public class HomeController : Controller
     {
+        public IActionResult RecruiterMainForm()
+        {
+            return View();
+        }
         public IActionResult UserMainForm()
         {
             return View();
