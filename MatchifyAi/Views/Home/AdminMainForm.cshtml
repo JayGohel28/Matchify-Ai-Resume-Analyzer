@@ -1,5 +1,226 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Admin Dashboard - Matchify AI";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #DBD7D2;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            width: 260px;
+            background-color: #F5F5F5;
+            padding: 25px 20px;
+            box-shadow: 4px 0 12px rgba(0,0,0,0.08);
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #6C3082;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+            .nav-menu li {
+                margin-bottom: 18px;
+            }
+
+            .nav-menu a {
+                text-decoration: none;
+                color: #333;
+                padding: 12px 15px;
+                display: block;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+                .nav-menu a:hover {
+                    background-color: #6C3082;
+                    color: #fff;
+                    transform: translateX(6px);
+                }
+
+                .nav-menu a.logout {
+                    margin-top: 30px;
+                    background-color: #6C3082;
+                    color: #fff;
+                    text-align: center;
+                }
+
+                    .nav-menu a.logout:hover {
+                        background-color: #5a256f;
+                    }
+
+        /* ===== Main Content ===== */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .dashboard-header {
+            margin-bottom: 30px;
+        }
+
+            .dashboard-header h1 {
+                color: #333;
+                font-weight: 600;
+            }
+
+            .dashboard-header p {
+                color: #555;
+                margin-top: 8px;
+            }
+
+        /* ===== Cards ===== */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .admin-card {
+            background-color: #F5F5F5;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .admin-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 14px 26px rgba(0,0,0,0.15);
+            }
+
+            .admin-card h3 {
+                color: #6C3082;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+
+            .admin-card p {
+                color: #555;
+                font-size: 14px;
+            }
+
+        /* ===== Footer ===== */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 260px;
+            right: 0;
+            background-color: #F5F5F5;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #555;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            footer {
+                left: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Matchify AI</h2>
+        <ul class="nav-menu">
+            <li><a href="#">Manage Jobs</a></li>
+            <li><a href="#">Manage Recruiters</a></li>
+            <li><a href="#">Resume Analysis Records</a></li>
+            <li><a href="#">Skill Management</a></li>
+            <li><a href="#" class="logout">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Manage jobs, recruiters, skills, and resume analysis records efficiently.</p>
+        </div>
+
+        <div class="card-container">
+            <div class="admin-card">
+                <h3>Manage Jobs</h3>
+                <p>Create, update, and control all job listings from one place.</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Recruiter Management</h3>
+                <p>View and manage recruiter accounts and activity.</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Resume Analysis</h3>
+                <p>Track AI-based resume analysis and recommendation history.</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Skill Management</h3>
+                <p>Add, update, and map skills used in job matching.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Matchify AI — Admin Panel
+    </footer>
+
+</body>
+</html>
