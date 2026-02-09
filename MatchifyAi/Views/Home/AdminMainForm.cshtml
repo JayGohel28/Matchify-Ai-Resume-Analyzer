@@ -34,7 +34,7 @@
             animation: slideIn 0.6s ease;
         }
 
-        @keyframes slideIn {
+        @@keyframes slideIn {
             from {
                 transform: translateX(-100%);
             }
@@ -92,7 +92,7 @@
             animation: fadeIn 0.8s ease;
         }
 
-        @keyframes fadeIn {
+        @@keyframes fadeIn {
             from {
                 opacity: 0;
             }
@@ -161,7 +161,7 @@
             box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
         }
 
-        @media (max-width: 768px) {
+        @@media (max-width: 768px) {
             .sidebar {
                 width: 220px;
             }
@@ -175,7 +175,6 @@
 
 <body>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2>Matchify AI</h2>
         <ul class="nav-menu">
@@ -187,7 +186,6 @@
         </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="dashboard-header">
             <h1>Admin Dashboard</h1>
@@ -197,27 +195,26 @@
         <div class="card-container">
             <div class="admin-card">
                 <h3>Manage Jobs</h3>
-                <p>Create, update, and control all job listings from one place.</p>
+                <p>Create, update, and control all job listings.</p>
             </div>
 
             <div class="admin-card">
-                <h3>Recruiter Management</h3>
-                <p>View and manage recruiter accounts and activity.</p>
+                <h3>Manage Recruiters</h3>
+                <p>Monitor recruiter accounts and activities.</p>
             </div>
 
             <div class="admin-card">
                 <h3>Resume Analysis</h3>
-                <p>Track AI-based resume analysis and recommendation history.</p>
+                <p>View AI-powered resume analysis records.</p>
             </div>
 
             <div class="admin-card">
                 <h3>Skill Management</h3>
-                <p>Add, update, and map skills used in job matching.</p>
+                <p>Maintain skill data for accurate job matching.</p>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         © 2026 Matchify AI — Admin Panel
     </footer>
