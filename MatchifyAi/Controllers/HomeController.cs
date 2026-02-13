@@ -27,12 +27,19 @@ namespace MatchifyAi.Controllers
             {
                 _context.ContactMessages.Add(model);
                 _context.SaveChanges();
+
+                // Success message
+                TempData["SuccessMessage"] = "Feedback sent successfully!";
+
                 return RedirectToAction("Index");
             }
 
             return View("Index");
         }
 
-        // other actions...
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }
