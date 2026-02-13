@@ -376,11 +376,9 @@
     </footer>
     @if (TempData["SuccessMessage"] != null)
     {
-        <div style="color: green; font-weight: bold;">
-            @TempData["SuccessMessage"]
-        </div>
+        <script>
+            alert("@TempData["SuccessMessage"]");
+        </script>
     }
-
-
 </body>
 </html>
