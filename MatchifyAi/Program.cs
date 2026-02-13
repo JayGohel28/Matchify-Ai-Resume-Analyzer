@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using MatchifyAI.Data;
+using Microsoft.EntityFrameworkCore;
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var builder = WebApplication.CreateBuilder(args);
 
