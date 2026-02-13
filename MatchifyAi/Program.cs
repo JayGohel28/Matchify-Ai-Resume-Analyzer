@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using MatchifyAI.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
