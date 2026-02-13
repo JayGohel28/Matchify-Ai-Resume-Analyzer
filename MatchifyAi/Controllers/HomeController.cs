@@ -1,6 +1,7 @@
 using MatchifyAI.Data;
 using MatchifyAI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace MatchifyAi.Controllers
 {
@@ -15,12 +16,15 @@ namespace MatchifyAi.Controllers
             _context = context;
         }
 
+        // GET: Home/Index
         public IActionResult Index()
         {
             return View();
         }
 
+        // POST: Home/Contact
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactMessage model)
         {
             if (ModelState.IsValid)
@@ -28,7 +32,6 @@ namespace MatchifyAi.Controllers
                 _context.ContactMessages.Add(model);
                 _context.SaveChanges();
 
-                // Success message
                 TempData["SuccessMessage"] = "Feedback sent successfully!";
 
                 return RedirectToAction("Index");
