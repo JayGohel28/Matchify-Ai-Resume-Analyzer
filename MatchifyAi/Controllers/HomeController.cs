@@ -40,6 +40,33 @@ namespace MatchifyAi.Controllers
             return View("Index");
         }
 
+        // ================= RECRUITER JOB POST =================
+
+        // GET: Recruiter Form
+        public IActionResult RecruiterMainForm()
+        {
+            return View();
+        }
+
+        // POST: Recruiter Form
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RecruiterMainForm(Job model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Jobs.Add(model);
+                _context.SaveChanges();
+
+                TempData["JobMessage"] = "Job posted successfully!";
+                return RedirectToAction("RecruiterMainForm");
+            }
+
+            return View(model);
+        }
+
+        // =======================================================
+
         public IActionResult Privacy()
         {
             return View();
