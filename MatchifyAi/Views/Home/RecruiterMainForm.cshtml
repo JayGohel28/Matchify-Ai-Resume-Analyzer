@@ -431,6 +431,11 @@
             © 2026 Matchify AI. All rights reserved.
         </div>
     </footer>
-
+    @if (TempData["JobMessage"] != null)
+    {
+        <script>
+            alert("@TempData["JobMessage"]");
+        </script>
+    }
 </body>
 </html>
