@@ -2,7 +2,6 @@ using MatchifyAI.Data;
 using MatchifyAI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Text;
 
 namespace MatchifyAi.Controllers
 {
@@ -35,6 +34,7 @@ namespace MatchifyAi.Controllers
                 TempData["SuccessMessage"] = "Feedback sent successfully!";
                 return RedirectToAction("Index");
             }
+
             return View("Index");
         }
 
@@ -57,36 +57,12 @@ namespace MatchifyAi.Controllers
                 return View();
             }
 
-            // Read resume text (basic)
             string resumeText = "";
+
             using (var reader = new StreamReader(ResumeFile.OpenReadStream()))
             {
                 resumeText = reader.ReadToEnd();
             }
-
-            // Store in TempData
-            TempData["ResumeText"] = resumeText;
-            TempData["JobRole"] = JobRole;
-            TempData["ExperienceLevel"] = ExperienceLevel;
-            TempData["EmploymentType"] = EmploymentType;
-
-            return RedirectToAction("Processing");
-        }
-
-        // ================= PROCESSING PAGE =================
-        public IActionResult Processing()
-        {
-            return View();
-        }
-
-        // ================= RESULT PAGE =================
-        public IActionResult Result()
-        {
-            string resumeText = TempData["ResumeText"]?.ToString();
-            string jobRole = TempData["JobRole"]?.ToString();
-
-            if (string.IsNullOrEmpty(resumeText))
-                return RedirectToAction("UserMainForm");
 
             // ===== Role Based Required Skills =====
             Dictionary<string, List<string>> roleSkills = new()
@@ -97,8 +73,8 @@ namespace MatchifyAi.Controllers
                 { "Full Stack Developer", new List<string>{ "html", "css", "javascript", "react", "node", "sql" } }
             };
 
-            var requiredSkills = roleSkills.ContainsKey(jobRole)
-                ? roleSkills[jobRole]
+            var requiredSkills = roleSkills.ContainsKey(JobRole)
+                ? roleSkills[JobRole]
                 : new List<string>();
 
             List<string> extractedSkills = new();
@@ -119,21 +95,21 @@ namespace MatchifyAi.Controllers
                 score = (extractedSkills.Count * 100) / requiredSkills.Count;
 
             // Detect experience
-            string experienceDetected = "Not Clearly Mentioned";
-            if (lowerResume.Contains("year"))
-                experienceDetected = "Experience Mentioned";
+            string experienceDetected = lowerResume.Contains("year")
+                ? "Experience Mentioned"
+                : "Not Clearly Mentioned";
 
+            // Pass data to Result View
             ViewBag.Score = score;
             ViewBag.ExtractedSkills = extractedSkills;
             ViewBag.MissingSkills = missingSkills;
-            ViewBag.JobRole = jobRole;
+            ViewBag.JobRole = JobRole;
             ViewBag.ExperienceDetected = experienceDetected;
-
             ViewBag.Suggestions = missingSkills.Count > 0
                 ? "Improve your resume by adding missing technical skills and project experience."
                 : "Strong profile. Focus on measurable achievements.";
 
-            return View();
+            return View("Result");
         }
 
         // ================= RECRUITER =================
@@ -154,6 +130,7 @@ namespace MatchifyAi.Controllers
                 TempData["JobMessage"] = "Job posted successfully!";
                 return RedirectToAction("RecruiterMainForm");
             }
+
             return View(model);
         }
 
