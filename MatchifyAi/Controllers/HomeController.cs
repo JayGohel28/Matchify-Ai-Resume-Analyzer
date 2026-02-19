@@ -67,7 +67,7 @@ namespace MatchifyAi.Controllers
             // ===== Role Based Required Skills =====
             Dictionary<string, List<string>> roleSkills = new()
             {
-                { ".NET Developer", new List<string>{ "c#", "asp.net", "sql", "entity framework", "mvc" } },
+                { ".NET Developer", new List<string>{ "c#", "ASP.NET", "sql", "entity framework", "mvc" } },
                 { "Java Developer", new List<string>{ "java", "spring", "hibernate", "sql" } },
                 { "Python Developer", new List<string>{ "python", "django", "flask", "sql" } },
                 { "Full Stack Developer", new List<string>{ "html", "css", "javascript", "react", "node", "sql" } }
